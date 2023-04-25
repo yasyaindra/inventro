@@ -1,0 +1,83 @@
+<%- include ../../partials/header.ejs %> <%- include ../../partials/navbar.ejs
+%> <%- include ../../partials/sidebar.ejs %>
+<div class="content-wrapper">
+  <!-- Content Header (Page header) -->
+  <section class="content-header">
+    <div class="container-fluid">
+      <div class="row mb-2">
+        <div class="col-sm-6">
+          <h1>Kategori</h1>
+        </div>
+        <div class="col-sm-6">
+          <ol class="breadcrumb float-sm-right">
+            <li class="breadcrumb-item"><a href="/">Home</a></li>
+            <li class="breadcrumb-item"><a href="/category">Kategori</a></li>
+            <li class="breadcrumb-item active">Tambah</li>
+          </ol>
+        </div>
+      </div>
+    </div>
+    <!-- /.container-fluid -->
+  </section>
+
+  <!-- Main content -->
+  <section class="content">
+    <div class="container-fluid">
+      <div class="row">
+        <div class="col-12">
+          <div class="card card-primary">
+            <div class="card-header">
+              <h3 class="card-title">Form tambah sale</h3>
+            </div>
+            <!-- /.card-header -->
+            <!-- form start -->
+            <form action="/order/create" method="POST">
+              <div class="card-body">
+                <div class="form-group">
+                  <label for="name">Name</label>
+                  <input
+                    type="text"
+                    name="name"
+                    class="form-control"
+                    id="name"
+                    placeholder="Masukan nama name"
+                    required
+                  />
+                </div>
+                <div class="form-group">
+                  <label>Product</label>
+                  <div class="select2-purple">
+                    <select
+                      class="form-control select2"
+                      multiple="multiple"
+                      data-placeholder="Pilih product"
+                      style="width: 100%"
+                      name="quantityProducts"
+                      required
+                    >
+                      <% quantityProducts.forEach(quantity=>{ %>
+                      <option value="<%= quantity._id %>">
+                        <%= quantity.quantityProduct %> <%=
+                        quantity.quantityName %>
+                      </option>
+                      <% }) %>
+                    </select>
+                  </div>
+                </div>
+              </div>
+              <div class="card-footer">
+                <button type="submit" class="btn btn-primary">Simpan</button>
+              </div>
+            </form>
+          </div>
+        </div>
+        <!-- /.col -->
+      </div>
+      <!-- /.row -->
+    </div>
+    <!-- /.container-fluid -->
+  </section>
+  <!-- /.content -->
+</div>
+
+<%- include ../../partials/footer.ejs %> <%- include ../../partials/js.ejs %>

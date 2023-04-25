@@ -1,0 +1,27 @@
+<table id="example2" class="table table-bordered table-hover">
+  <thead>
+    <tr>
+      <th>No.</th>
+      <th>Order</th>
+      <th>Quantity</th>
+      <th>Products</th>
+    </tr>
+  </thead>
+  <tbody>
+    <% for(let i=0; i < sales.length; i++){ %>
+    <tr>
+      <td><%= i + 1 %></td>
+      <td><%= sales[i]?.order?.name %></td>
+      <td><%= sales[i]?.quantity %></td>
+      <td>
+        <% sales[i]?.order?.quantityProducts.forEach(quantity => { %>
+        <span class="badge badge-warning">
+          <%= quantity.quantityName %> - <%= quantity.quantityProduct *
+          sales[i]?.quantity %>
+        </span>
+        <% }) %>
+      </td>
+    </tr>
+    <% } %>
+  </tbody>
+</table>

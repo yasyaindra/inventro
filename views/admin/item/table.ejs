@@ -1,0 +1,50 @@
+<table id="example2" class="table table-bordered table-hover">
+  <thead>
+    <tr>
+      <th>No.</th>
+      <th>Image</th>
+      <th>Product</th>
+      <th>Category</th>
+      <th>Supplier</th>
+      <th>Quantity</th>
+      <th>Quantity To Be Substracted</th>
+      <th>Action</th>
+    </tr>
+  </thead>
+  <tbody>
+    <% for(let i = 0; i < item.length; i++){ %>
+    <tr>
+      <td><%= i + 1 %></td>
+      <td>
+        <img
+          src="/uploads/<%= item[i].thumbnial  %>"
+          alt="<%= item[i].name %>"
+          width="200px"
+          height="150px"
+        />
+      </td>
+      <td><%= item[i].name %></td>
+      <td><%= item[i]?.category?.name ?? '-' %></td>
+      <td><%= item[i]?.supplier?.name ?? '-' %></td>
+      <td><%= item[i]?.quantity %></td>
+      <td><%= item[i]?.substractedQty %></td>
+      <td>
+        <a href="/item/edit/<%= item[i]._id %>" class="btn btn-info btn-sm">
+          <i class="fas fa-pencil-alt"></i>
+          Ubah
+        </a>
+        <form
+          style="display: inline-block"
+          action="/item/delete/<%= item[i]._id %>?_method=DELETE"
+          method="POST"
+        >
+          <button class="btn btn-danger btn-sm">
+            <i class="fas fa-trash"></i>
+            Hapus
+          </button>
+        </form>
+      </td>
+    </tr>
+    <% } %>
+  </tbody>
+</table>
